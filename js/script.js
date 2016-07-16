@@ -90,18 +90,45 @@ var displayExample = function(){
 	$('.compile').click();
 };
 
+function tokenize(template) {
+    var parser = engine.Parser,
+        lexer = parser.lexer;
+
+    lexer.setInput(template);
+    var out = [],
+        token;
+
+    while ((token = lexer.lex())) {
+        var result = parser.terminals_[token] || token;
+        if (!result || result === 'EOF' || result === 'INVALID') {
+            break;
+        }
+        out.push({name: result, text: lexer.yytext});
+    }
+
+    return out;
+}
+
 var compile = function(){
 	try {
 		var templateFn, html = "",
+            ast, tokens = null,
 			source = $('textarea#source').val(),
 			context = eval( '(' + $('textarea#context').val() + ')' );
 
 		//run any helpers code
 		eval( $('textarea#helpers').val() );
 
+        $('#ast-window').empty();
+        $('#token-window').empty();
+
 		if( engine.name === "mustache.js" ){
 			html = engine.render( source, context );
 		} else {
+            tokens = tokenize(source);
+            $('#token-window').text(JSON.stringify(tokens, null, 2));
+            ast = engine.parse(source);
+            $('#ast-window').text(JSON.stringify(ast, null, 2));
 			templateFn = engine.compile(source);
 			html = templateFn(context);
 		}
@@ -109,6 +136,8 @@ var compile = function(){
 		//compile main template
 		$('#output-window').val(html);
 		$('#output-window-html').text(html).html(html);
+
+
 		$('p.errors span').empty();
 	} catch (error) {
 		$('#output-window').val('');

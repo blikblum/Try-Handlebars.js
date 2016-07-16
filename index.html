@@ -283,16 +283,7 @@ Handlebars.registerHelper('agree_button', function() {
 </head>
 <body style="background-color:orange;">
 	<div id="container">
-        <a href="https://github.com/jblotus/Try-Handlebars.js"><img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
-		<section class="stripe padding--all" style="background-color:orange;">
-			<h1 style="color:black;">Try Handlebars.js right now in your browser</h1>
-			<p>
-				<a href="http://www.handlebarsjs.com">Handlebars.js</a> is a sweet javascript library for building clean logicless templates
-				 based on the
-				<a href="http://mustache.github.com/">Mustache Templating Language</a>.
-			</p>
 
-		</section>
 
 		<div id="main" role="main" class="borderradius">
 	<div class="padding--all">
@@ -340,6 +331,17 @@ Handlebars.registerHelper('agree_button', function() {
 		<p class="errors padding--left padding--right"><span></span></p>
 	</div>
 
+    <div class="output spreadable atLarge_spreadable--spread padding--all">
+        <div class="spreadable-item">
+            <p>Tokens</p>
+            <textarea id="token-window"></textarea>
+        </div>
+        <div class="spreadable-item">
+            <p>AST</p>
+            <textarea id="ast-window"></textarea>
+        </div>
+    </div>
+
 	<div class="output spreadable atLarge_spreadable--spread padding--all">
 		<div class="spreadable-item">
 			<p>HTML Source Output</p>
@@ -350,6 +352,7 @@ Handlebars.registerHelper('agree_button', function() {
 			<div id="output-window-html">{{{output}}}</div>
 		</div>
 	</div>
+
 
 </div>
 		
@@ -363,18 +366,5 @@ Handlebars.registerHelper('agree_button', function() {
 		</footer>
 	</div>
 
-	<script type="text/javascript">
-	
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-23515515-1']);
-	  _gaq.push(['_trackPageview']);
-	
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-	
-	</script>
 </body>
 </html>
