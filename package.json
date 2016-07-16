@@ -29,7 +29,7 @@
   },
   "main": "Gruntfile.js",
   "scripts": {
-    "install": "jspm install; bower install; cd components/sassquatch2; bower install; cd ../..; grunt sass; jspm bundle-sfx js/script --minify",
+    "install": "jspm install && bower install && cd components/sassquatch2 && bower install && cd ../.. && grunt sass && jspm bundle-sfx js/script --minify",
     "clean": "rm -r build.js build.js.map components jspm_packages css"
   },
   "jspm": {
